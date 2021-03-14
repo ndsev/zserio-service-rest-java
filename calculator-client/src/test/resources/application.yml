@@ -27,4 +27,4 @@ spring:
             request-timeout: -1
         
 wiremock:
-    port: 6666
+    port: 5001

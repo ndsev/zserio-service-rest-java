@@ -42,5 +42,5 @@ http://localhost:5000/api-ui.html
 ## URL for OpenAPI docs (JSON format)
 
 ```bash
-http://localhost:5000//api-docs
+http://localhost:5000/api-docs
 ```
