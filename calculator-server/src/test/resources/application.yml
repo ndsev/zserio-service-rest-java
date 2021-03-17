@@ -1,0 +1,30 @@
+feign:
+    client:
+        config:
+            default:
+                connectTimeout: 60000
+                decoder: zserio.service.rest.java.feign.ZserioFeignDecoder
+                encoder: zserio.service.rest.java.feign.ZserioFeignEncoder
+                loggerLevel: basic
+                readTimeout: 60000
+    url: http://localhost:${server.port}
+
+logging:
+    level:
+        root: WARN
+        zserio: INFO
+
+server:
+    port: 5555
+
+spring:
+    application:
+        name: zserio-calculator-service-server
+
+    messages:
+        encoding: UTF-8 
+        fallback-to-system-locale: true 
+
+    mvc:
+      async:
+        request-timeout: -1
