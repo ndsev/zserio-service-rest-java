@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.AbstractHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
+import org.springframework.util.StreamUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import zserio.runtime.io.InitializeOffsetsWriter;
@@ -30,7 +31,9 @@ public class SpringZserioOctetStreamHttpMessageConverter extends AbstractHttpMes
             HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
         if ((inputMessage != null) && (inputMessage.getBody() != null)) {
             try {
-                InitializeOffsetsWriter value = ZserioIO.read(clazz, inputMessage.getBody().readAllBytes());
+                // java.io.InputStream has readAllBytes() only from Java 9, use Spring alternative instead
+                InitializeOffsetsWriter value = ZserioIO.read(clazz,
+                        StreamUtils.copyToByteArray(inputMessage.getBody()));
                 return value;
             } catch (Exception e) {
                 e.printStackTrace();
