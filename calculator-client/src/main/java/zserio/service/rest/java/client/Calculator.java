@@ -39,6 +39,7 @@ public class Calculator {
 
             if (input.charAt(0) == 'q') {
                 System.out.println("quitting calculator");
+                Thread.sleep(1000); // wait a little bit for a potential responses
                 break;
             }
 

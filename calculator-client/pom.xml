@@ -43,8 +43,8 @@
         </dependency>
 
         <dependency>
-            <groupId>zserio</groupId>
-            <artifactId>zserio_runtime</artifactId>
+            <groupId>io.github.ndsev</groupId>
+            <artifactId>zserio-runtime</artifactId>
         </dependency>
 
         <dependency>

@@ -54,15 +54,15 @@
             </dependency>
 
             <dependency>
-                <groupId>zserio</groupId>
+                <groupId>io.github.ndsev</groupId>
                 <artifactId>zserio</artifactId>
-                <version>2.2.0</version>
+                <version>[2.2.0,)</version>
             </dependency>
 
             <dependency>
-                <groupId>zserio</groupId>
-                <artifactId>zserio_runtime</artifactId>
-                <version>2.2.0</version>
+                <groupId>io.github.ndsev</groupId>
+                <artifactId>zserio-runtime</artifactId>
+                <version>[2.2.0,)</version>
             </dependency>
 
             <dependency>
@@ -84,10 +84,6 @@
     </dependencyManagement>
 
     <repositories>
-        <repository>
-            <id>local-maven-repository</id>
-            <url>file:///${project.basedir}/../lib/maven-repository</url>
-        </repository>
         <repository>
             <id>spring-milestone</id>
             <name>Spring Milestones</name>

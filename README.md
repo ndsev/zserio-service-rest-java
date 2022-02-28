@@ -7,14 +7,12 @@ Sample implementation of Zserio Service REST backend in **Java** using SpringBoo
    1. JDK 11+
    2. Maven 3.6
 
-<br>
-
 # Usage
 
 ## Build Calculator example
 
 ```bash
-mvn clean package
+mvn package
 ```
 
 ## Start server of Calculator example
