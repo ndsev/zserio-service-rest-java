@@ -11,11 +11,11 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.util.StreamUtils;
 
 import lombok.extern.slf4j.Slf4j;
-import zserio.runtime.io.InitializeOffsetsWriter;
-import zserio.runtime.io.ZserioIO;
+import zserio.runtime.io.Writer;
+import zserio.runtime.io.SerializeUtil;
 
 @Slf4j
-public class SpringZserioOctetStreamHttpMessageConverter extends AbstractHttpMessageConverter<InitializeOffsetsWriter> {
+public class SpringZserioOctetStreamHttpMessageConverter extends AbstractHttpMessageConverter<Writer> {
 
     public SpringZserioOctetStreamHttpMessageConverter() {
         super(MediaType.APPLICATION_OCTET_STREAM, MediaType.TEXT_HTML);
@@ -23,16 +23,16 @@ public class SpringZserioOctetStreamHttpMessageConverter extends AbstractHttpMes
 
     @Override
     protected boolean supports(Class<?> clazz) {
-        return InitializeOffsetsWriter.class.isAssignableFrom(clazz);
+        return Writer.class.isAssignableFrom(clazz);
     }
 
     @Override
-    protected InitializeOffsetsWriter readInternal(Class<? extends InitializeOffsetsWriter> clazz,
+    protected Writer readInternal(Class<? extends Writer> clazz,
             HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
         if ((inputMessage != null) && (inputMessage.getBody() != null)) {
             try {
                 // java.io.InputStream has readAllBytes() only from Java 9, use Spring alternative instead
-                InitializeOffsetsWriter value = ZserioIO.read(clazz,
+                Writer value = SerializeUtil.deserializeFromBytes(clazz,
                         StreamUtils.copyToByteArray(inputMessage.getBody()));
                 return value;
             } catch (Exception e) {
@@ -46,10 +46,10 @@ public class SpringZserioOctetStreamHttpMessageConverter extends AbstractHttpMes
     }
 
     @Override
-    protected void writeInternal(InitializeOffsetsWriter value, HttpOutputMessage outputMessage)
+    protected void writeInternal(Writer value, HttpOutputMessage outputMessage)
             throws IOException, HttpMessageNotWritableException {
         try {
-            byte[] byteArray = ZserioIO.write(value);
+            byte[] byteArray = SerializeUtil.serializeToBytes(value);
             outputMessage.getBody().write(byteArray);
         } catch (Exception e) {
             log.error("error writing stream data");

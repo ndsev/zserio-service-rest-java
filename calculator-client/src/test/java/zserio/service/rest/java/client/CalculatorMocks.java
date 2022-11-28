@@ -20,7 +20,7 @@ public class CalculatorMocks {
     public void setupMockPowerResponse(WireMockServer mockService, I32 request) throws IOException {
         U64 response = new U64(BigInteger.valueOf(request.getValue()).pow(2));
         ByteArrayBitStreamWriter writer = new ByteArrayBitStreamWriter();
-        response.write(writer, false);
+        response.write(writer);
         byte[] byteArray = writer.toByteArray();
 
         mockService.stubFor(WireMock.post(WireMock.urlEqualTo(ZserioCalculatorServiceInterface.POWER_OF_TWO))
@@ -31,7 +31,7 @@ public class CalculatorMocks {
     public void setupMockSquareRootResponse(WireMockServer mockService, Double request) throws IOException {
         Double response = new Double(Math.sqrt(request.getValue()));
         ByteArrayBitStreamWriter writer = new ByteArrayBitStreamWriter();
-        response.write(writer, false);
+        response.write(writer);
         byte[] byteArray = writer.toByteArray();
 
         mockService.stubFor(WireMock.post(WireMock.urlEqualTo(ZserioCalculatorServiceInterface.SQUARE_ROOT))
