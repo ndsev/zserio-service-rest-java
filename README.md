@@ -1,5 +1,13 @@
 # Zserio Service REST backend
 
+[![](https://github.com/ndsev/zserio-service-rest-java/actions/workflows/build_linux.yml/badge.svg)](https://github.com/ndsev/zserio-service-rest-java/actions/workflows/build_linux.yml)
+[![](https://github.com/ndsev/zserio-service-rest-java/actions/workflows/build_windows.yml/badge.svg)](https://github.com/ndsev/zserio-service-rest-java/actions/workflows/build_windows.yml)
+[![](https://img.shields.io/github/watchers/ndsev/zserio-service-rest-java.svg)](https://GitHub.com/ndsev/zserio-service-rest-java/watchers)
+[![](https://img.shields.io/github/forks/ndsev/zserio-service-rest-java.svg)](https://GitHub.com/ndsev/zserio-service-rest-java/network/members)
+[![](https://img.shields.io/github/stars/ndsev/zserio-service-rest-java.svg?color=yellow)](https://GitHub.com/ndsev/zserio-service-rest-java/stargazers)
+
+--------
+
 Sample implementation of Zserio Service REST backend in **Java** using SpringBoot.
 
 # Prerequisites
