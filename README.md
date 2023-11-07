@@ -12,7 +12,7 @@ Sample implementation of Zserio Service REST backend in **Java** using SpringBoo
 
 # Prerequisites
 
-   1. JDK 11+
+   1. JDK 1.8
    2. Maven 3.6
 
 # Usage
