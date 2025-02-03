@@ -41,7 +41,7 @@ jobs:
         kill $(jobs -p)
 
     - name: Archive Zserio Java Service Rest classes
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: zserio-service-rest-java-${{matrix.os}}
         path: |
